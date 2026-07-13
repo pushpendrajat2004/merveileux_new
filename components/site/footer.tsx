@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Instagram, Youtube, Mail } from 'lucide-react'
+import { Camera, CirclePlay, Mail } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -20,14 +20,14 @@ export function Footer() {
             aria-label="Instagram"
             className="text-muted-foreground transition-colors hover:text-primary"
           >
-            <Instagram className="size-5" />
+            <Camera className="size-5" />
           </Link>
           <Link
             href="https://youtube.com"
             aria-label="YouTube"
             className="text-muted-foreground transition-colors hover:text-primary"
           >
-            <Youtube className="size-5" />
+            <CirclePlay className="size-5" />
           </Link>
           <Link
             href="mailto:merveilleux@nitj.ac.in"
