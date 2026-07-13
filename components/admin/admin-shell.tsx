@@ -23,8 +23,18 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const supabase = createClient()
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (!session) {
+        router.replace('/auth/login')
+        return
+      }
+      const { data } = await supabase
+        .from('admins')
+        .select('user_id')
+        .eq('user_id', session.user.id)
+        .maybeSingle()
+      if (!data) {
+        await supabase.auth.signOut()
         router.replace('/auth/login')
         return
       }
